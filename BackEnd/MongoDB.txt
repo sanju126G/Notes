@@ -1,0 +1,414 @@
+Mongo DB Notes
+
+Step-1 ->Visit the WWW.mongodb.com and under software dropdown select community server and download the latest version.
+
+step-2 ->Run the file and install the application.
+
+step-3 -> while installing create a folder on desktop with the name "data" (small letters is the standard way to name the folder),
+	  and create one more file inside that data file with the name "db".
+
+step-4 -> After installing the mongodb, open c:>program files>Mongodb>server>4.4(version no)>bin and copy the path of that bin file. 
+	  After copying the path right click on "This-pc" and open properties.
+	  it'll open the settings window and inside that window find "advanced system settings",
+	  it'll open another window called System properties, on bottom right side of that window you'll find one button "environment variabls" click that button.
+	  after that it'll open another window called Environment variables, it'll have two division, inside that user Variables div double click on path option.
+	  it'll open another window that is edit environment variables, and inside that window find the new button and click that button. 
+	  and paste the copied path inside that new filed which is creted. and click ok of all the tabs which you have opend in this process.
+
+step-5 -> open cmd prompt and move to desktop directory and run mongod -dbpath "data/db". and leave this window open
+
+step-6 -> open a new window and move to desktop and run mongo it'll give you access to mongo db shell where you can execute your queries.
+
+----------------------------------------mongodb Theory------------------------------------------------
+
+1. What is mongodb .?
+	-> MongoDB is a distributed database at its core, so high availability, horizontal scaling, and geographic distribution are built in and easy to use MongoDB is free to use.
+		1.High Availablity:
+		->High Availability (HA) describes systems that are dependable enough to operate continuously without failing. 
+		2.horizontal scaling:
+		->
+	->  MongoDB uses indexing in order to make the query processing more efficient.
+
+2. What is Collections in mongodb .?
+	-> Collection in MongoDB is group of related documents that are bound together.
+	-> The collection does not follow any schema which is one of the remarkable feature of MongoDB. 
+
+----------------------------------------mongodb Commands------------------------------------------------
+
+>show dbs :- to view the existing database 
+admin   0.000GB
+config  0.000GB
+demo    0.000GB
+local   0.000GB
+
+>use <database_name> :- It'll check if the given database is exist or not in that given name. if it exists it'll switch to that database.
+			if it doesn't it'll create a new database and switch to that database.
+
+>db.createCollection("employee") :- it'll create A new collection inside selected database by the name of employee.
+				   -> collections are nothing but data.
+{ "ok" : 1 }
+
+> show collections  :- will print all the collections inside selected database.
+emp
+sanjay
+test
+
+> db.collectionName.insert({object properties}) :- this query will write the data into specified collection.
+WriteResult({ "nInserted" : 1 })
+
+> db.collectionName.insertOne({object properties}) :- the insertone method used to store one data into collection.
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("60d334275fbc7d3357712690")
+}
+
+> db.collectionName.insertMany([{objects}]):- this insertMany() is used store multiple data.
+ example :- 
+db.emp.insertMany([
+...     {
+...         _id:1234,
+...         name:"Priyanka",
+...         email:"priyanka@gmail.com",
+...         salary:3000,
+...         dept:10,
+...         address:{
+...             dno:123,
+...             street:"basavanagudi",
+...             city:"bangalore",
+...             pincode:560086
+...         },
+...         phone:[1111111111,2222222222]
+...     },
+...     {
+...         _id:1235,
+...         name:"Dharini",
+...         email:"dharini@gmail.com",
+...         salary:7000,
+...         dept:10,
+...         address:{
+...             dno:564,
+...             street:"MG road",
+...             city:"bangalore",
+...             pincode:522003
+...         },
+...         phone:[6666666666]
+...     },
+...     {
+...         _id:1236,
+...         name:"Sanjay",
+...         email:"sanjay@gmail.com",
+...         salary:2000,
+...         dept:20,
+...         address:{
+...             dno:456,
+...             street:"banshankri",
+...             city:"bangalore",
+...             pincode:560085
+...         },
+...         phone:[7777777777]
+...     },
+...     {
+...         _id:1237,
+...         name:"Abbas",
+...         email:"abbas@gmail.com",
+...         salary:6000,
+...         dept:30,
+...         address:{
+...             dno:789,
+...             street:"Jayanagar",
+...             city:"chennai",
+...             pincode:546733
+...         },
+...         phone:[3333333333,9999999999]
+...     },
+...     {
+...         _id:1238,
+...         name:"Sivaji",
+...         email:"sivaji@gmail.com",
+...         salary:10000,
+...         dept:20,
+...         address:{
+...             dno:342,
+...             street:"MG road",
+...             city:"bangalore",
+...             pincode:522003
+...         },
+...         phone:[8888888888]
+...     },
+...     {
+...         _id:1239,
+...         name:"Sateesh",
+...         email:"sateesh@gmail.com",
+...         salary:9000,
+...         dept:30,
+...         address:{
+...             dno:898,
+...             street:"MG road",
+...             city:"hyderabad",
+...             pincode:517644
+...         },
+...         phone:[1234567898]
+...     },
+...
+...
+... ])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                1234,
+                1235,
+                1236,
+                1237,
+                1238,
+                1239
+        ]
+}
+
+> db.collectionName.find() :- this find() method will display all data inside specified collection.
+
+>db.collectionName.find({selection},{projection}) :- we can use these properities where selection is the condition used to segregate the data.
+						     and the projection tells the db what to display based on that selection.
+
+example:-
+	> db.emp.find({dept:30},{name:1}) -> this query selecting all the employee in which the dept number is 30 and displaying names of those selected employee
+	{ "_id" : 1237, "name" : "Abbas" }	id will be displaying by default for all the queries. but if we don't need it to diplay we need to set it's value to 0 inside the projection.
+	{ "_id" : 1239, "name" : "Sateesh" } 	
+
+0.1. To display all the employees whoose dept no is 10.
+>> db.emp.find({dept:10})
+
+0.2 To display emial id of all the employees whoose salary is 2000
+>> db.emp.find({salary:2000},{email:1,_id:0}
+
+0.3 To display name and dno of all the employees who resides in bangalore
+>> db.emp.find({"address.city":"bangalore"},{name:1,"address.dno":1,_id:0}
+
+1. To display name of the employee whoose dept is 30
+>> db.emp.find({dept:30},{name:1,_id:0})
+
+2. To dislay name and salary of the employee whoose phone number is 9999999999
+>> db.emp.find({phone:9999999999},{name:1,salary:1,_id:0})
+
+3. To dislay name of the employee who resides in bangalore.
+>> db.emp.find({"address.city":"bangalore"},{name:1,_id:0})
+
+4. To dislay name and address of the employee who resides in bangalore.
+>> db.emp.find({"address.city":"bangalore"},{name:1,address:1,_id:0})
+
+5. To dislay name and address of the employee who resides in bangalore by using pretty method.
+>> db.emp.find({"address.city":"bangalore"},{name:1,address:1,_id:0}).pretty() --> pretty() method is used mainly to display the result in a more easy-to-read format.
+
+6. To display all the employees whoose salary is not 2000
+>> db.emp.find({salary:{$ne:2000}}).pretty()
+
+7. To display all the employees whoose salary is 2000,3000 and 6000
+>> db.emp.find({salary:{$in:[2000,3000,6000]}}).pretty()
+
+8. To display name and salary of all the employees whoose salary is greater than 3000 and who resides in bangalore
+>> db.emp.find({salary:{$gt:3000},"address.city":"bangalore"},{name:1,salary:1,_id:0})
+
+9. To display name and salary of all the employees whoose salary is less than 3000 and who resides in bangalore
+>> db.emp.find({salary:{$lt:3000},"address.city":"bangalore"},{name:1,salary:1,_id:0})
+
+10. To display name and salary of all the employees whoose salary is less than 8000 and whoose dept is 10
+>> db.emp.find({salary:{$lt:8000},dept:10},{name:1,salary:1,_id:0}).pretty()
+
+11. To display name and city of all the employees whoose salary is not equal to 2000,6000,10000
+>> db.emp.find({salary:{$nin:[2000,6000,10000]}},{name:1,"address.city":1,_id:0}).pretty()   
+
+12. To display name and pincode of all the employees whoose salary is 2000,6000.
+>> db.emp.find({salary:{$in:[2000,6000]},"address.city":{$ne:"hyderabad"}},{name:1,"address.pincode":1,_id:0})
+
+13. To display name and street of all the employees who residesn in bangalore.
+>> db.emp.find({"address.city":"bangalore"},{name:1,"address.street":1,_id:0})
+
+14. To display all the employees whoose salary is not greater than 5000.
+>> db.emp.find({salary:{$not:{$gt:5000}}}).pretty()
+
+15. To display all the employee names whoose salary is less than 5000 and city is bangalore.
+>> db.emp.find({$and:[{"address.city":"bangalore"},{salary:{$lt:5000}}]},{name:1,salary:1,_id:0}).pretty()
+
+16. To display all the employees who has the field temprorary.
+>>  db.emp.find({temprorary:{$exists:true}})
+
+17. To display all the employees whoose salary type is of string.
+>> db.emp.update({_id:1234},{$set:{salary:"three thousand"}})
+	WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>> db.emp.find({salary:{$type:"string"}}).pretty()
+
+18. To display only 3 employee names on a selected collection.
+>> db.emp.find().limit(3).pretty()
+
+19. To display the number of data inside the selected colection.
+>> db.emp.find().count().pretty()
+
+20. To display all the employees in a asscending order based on their salary.
+>> db.emp.find().sort({salary:1}).pretty()
+>>db.emp.find().sort({salary:-1}).pretty()
+
+Update method and it's operator's
+
+21. To update the salary field as sal.
+>> db.emp.update({},{$rename:{salary:"sal"}})
+	-> it'll update only one value,
+	   hence if we need to update every filed inside a selected collections we need to use multi field and set it to true.
+>> db.emp.update({},{$rename:{salary:"sal"}},{multi:true}).pretty()
+
+*> To remove sal filed of priyanka.
+> db.emp.update({_id:1234},{$unset:{sal:""}},{})
+
+22. To increment all employees salary by 500.
+> db.emp.update({},{$inc:{sal:500}},{multi:true})
+
+23. To remove the field dno for all the employees.
+>> db.emp.update({},{$unset:{"address.dno":""},{multi:true})
+
+24. to update an salary of employee by 50000 whoose id is 1230
+>> db.emp.update({_id:1230},{$set:{sal:50000}})
+
+25. Using upsert method.
+>> db.emp.update({_id:9999},{$set:{sal:50000}},{upsert:true})
+
+26. Write a query to increment all the employees salary by 50%.
+>> db.emp.update({_id : 1235},{$inc:{sal:1000}},{})
+
+27. write a query to ensure that every employee will have a salary above 10000.
+>> db.emp.update
+
+27.1. $mult
+>> db.emp.update({_id : 1235},{$mul:{salary:0.5}},{})
+
+28. $max
+the max operator update the value of the field to a specified value if the specified value is greater than the current value of the field.
+>> db.emp.update({},{$max:{salary:10000}},{multi:true})
+
+29. $min
+the min operator updates the value of the field to a specified value if the the specified value is less than the current value of the filed.
+>> db.emp.update({},{$min:{salary:10000}},{multi:true})
+
+28. mock Querys
+>> db.emp.find({salary:{$eq:40000}},{name:1,email:1,_id:0})
+>> db.emp.find({salary:{$eq:40000}},{name:1,email:1,_id:0})
+
+29. Remove an document from collection
+>> db.courses.remove({price:7000})
+WriteResult({ "nRemoved" : 1 })
+
+//Aggregate method
+
+1. $match
+>> db.emp.aggregate({$match:{_id:1235}})
+{ "_id" : 1235, "name" : "Dharini", "email" : "dharini@gmail.com", "dept" : 10, "address" : { "street" : "MG road", "city" : "bangalore", "pincode" : 522003 }, "phone" : [ 6666666666 ], "salary" : 6000 }
+
+2.$project
+>> db.emp.aggregate({$match:{_id:1235}},{$project:{name:1}})
+{ "_id" : 1235, "name" : "Dharini" }
+
+>> db.emp.aggregate({$match:{dept:10}},{$project:{name:1,email:1}})
+{ "_id" : 1235, "name" : "Dharini", "email" : "dharini@gmail.com" }
+{ "_id" : 1239, "name" : "praveen" }
+
+3.$skip
+>> db.emp.aggregate({$match:{dept:10}},{$project:{name:1,email:1}},{$skip:1})
+{ "_id" : 1239, "name" : "praveen" }
+
+4.$limit
+>> db.emp.aggregate({$match:{dept:10}},{$project:{name:1,email:1}},{$limit:1})
+{ "_id" : 1235, "name" : "Dharini", "email" : "dharini@gmail.com" }
+
+5.$group
+>> db.emp.aggregate({$group:{_id:{dept:"$dept"}}})
+>> db.emp.aggregate({$group:{_id:"$dept"}})
+
+>>db.emp.aggregate({$group:{_id:"$dept",sum:{$sum:"$salary"}}})
+
+>>db.emp.aggregate({$group:{_id:"$dept",sum:{$max:"$salary"}}})
+
+>> db.emp.aggregate({$group:{_id:"$dept",maxSalary:{$max:"$salary"}}})
+
+>> db.emp.aggregate({$group:{_id:"$dept",maxSalary:{$max:"$salary"}}},{$sort:{salary:-1}})
+{ "_id" : 10, "maxSalary" : 34699.5 }
+{ "_id" : 30, "maxSalary" : 34650 }
+{ "_id" : 20, "maxSalary" : 33750 }
+{ "_id" : 50, "maxSalary" : 33750 }
+
+>> db.emp.aggregate({$group:{_id:"$dept",maxSalary:{$max:"$salary"}}},{$sort:{salary:-1}},{$limit:1})
+{ "_id" : 10, "maxSalary" : 34699.5 }
+
+
+
+-> Find method with Conditional operators
+	-> Similar to a relational database, MongoDB supports conditional select operations. MongoDB supports a number of conditional operators. 
+	-> Some commonly used conditional operators are the following:
+		Operator		Syntax					Examples
+		1. Equal		{ <Key> : <Value> }			> db.emp.find({dept:30},{name:1,_id:0})
+		2. Less Than		{ <Key> : { $lt : <value> } }		> db.emp.find({salary:{$lt:5000}},{name:1,salary:1,_id:0}).pretty()
+		3. Greater Than		{ <Key> : { $gt : <value> } }		> db.emp.find({salary:{$gt:5000}},{name:1,salary:1,_id:0}).pretty()
+		4. lesst than Equal	{ <Key> : { $lte : <Value> } }		> db.emp.find({salary:{$lte:5000}},{name:1,salary:1,_id:0}).pretty()
+		5. Greater than Equal	{ <Key> : { $gte : <Value> } }		> db.emp.find({salary:{$gte:5000}},{name:1,salary:1,_id:0}).pretty()
+		6. Not Equal		{ <Key> : { $ne : <Value> } }		> db.emp.find({salary:{$ne:5000}},{name:1,salary:1,_id:0}).pretty()
+		7. In			{ <key> : { $in : <value> } }		> db.emp.find({salary:{$in:5000}},{name:1,salary:1,_id:0}).pretty()
+		8. Not In		{ <key> : { $nin : <value> } }		> db.emp.find({salary:{$nin:5000}},{name:1,salary:1,_id:0}).pretty()
+
+-> Find Method with Multiple Conditional operators
+	-> Sometimes, we must apply multiple conditional operators in a find method. MongoDB provides various methods for such requirements. Next, we will explain some of these methods.
+	-> AND Condition
+		-> Using an AND condition, we can apply multiple conditional operators. 
+		-> The result will be to retrieve when all the conditions become True. 
+		-> We can pass multiple keys by separating them with a ','. Then MongoDB treats it as an AND condition.
+
+		-> Syntax: db.Collection_Name.find( {Key1:Value1 , Key2:value2,……..Keyn:Valuen })
+
+		-> Query: Retrieve the record of employee where the department of the employee is 20 and phone no is 7777777777.
+			-> >> db.emp.find({dept:20,phone:7777777777},{name:1,dept:1,phone:1,_id:0})
+	
+	-> OR Condition
+		-> Using an OR condition we can apply multiple conditional operators. 
+		-> The result will be retrieved when one or more conditions are True. 
+		-> We need to use the $or keyword for an OR condition.
+	
+		-> Syntax: db.Collection_Name.find ( { $or:[ { Key1: Value1 }, {Key2:Value2}, ……..{ Key2: Value2} ] } )
+			
+		-> Query: Retrieve the record of employee where the department of the employee is 20 or phone no is 7777777777.
+			->  >> db.emp.find({ $or: [{dept:20,phone:7777777777}]},{name:1,{name:1,dept:1,phone:1,_id:0})
+	
+	-> NOR Condition
+		-> Using an OR condition we can apply multiple conditional operators. 
+		-> The result will be retrieved when one or more conditions are True. 
+		-> We need to use the $or keyword for an OR condition.
+	
+		-> Syntax: db.Collection_Name.find ( { $nor:[ { Key1: Value1 }, {Key2:Value2}, ……..{ Key2: Value2} ] } )
+			
+		-> Query: Retrieve the record of employee where the department of the employee is 20 or phone no is 7777777777.
+			->  >> db.emp.find({ $nor: [{dept:20,phone:7777777777}]},{name:1,{name:1,dept:1,phone:1,_id:0})
+
+	-> Not Conditional
+		-> inverts the effect of query Express 
+
+
+	-> In Condition
+		-> The In condition is similar to the in condition of relational databases. 
+		-> The In condition is useful when we want to specify more than one value for a single key.
+		-> We need to use the $in keyword for an In condition. 
+		-> We can retrieve the same result using the OR conditional operator that we retrieve using the $in keyword.
+		
+		-> Syntax: db.Collection_Name.find ( { $in:[ { Key1: Value1 }, {Key2:Value2}, ……..{ Key2: Value2} ] } )
+		
+		-> Query: Retrieve the record of all employees where the address of the Employee is equal to bangalore or hyderabad and display name and city of those employees.
+			-> >> db.emp.find( {"address.city":{ $in : ["bangalore","hyderabad"]}},{name:1,"address.city":1,_id:0})
+
+
+INDEXING in MongoDB
+
+-> Indexes support the efficient resolution of queries. Without indexes, MongoDB must scan every 
+document of a collection to select those documents that match the query statement. This scan is 
+highly inefficient and require MongoDB to process a large volume of data.
+
+-> Indexes are special data structures, that store a small portion of the data set in an easy-to-traverse 
+form. The index stores the value of a specific field or set of fields, ordered by the value of the field as 
+specified in the index.
+
+-> Syntax
+	1. db.COLLECTION_NAME.createIndex({KEY:1})
+	2. db.COLLECTION_NAME.dropIndex({KEY:1})
+	3. db.COLLECTION_NAME.getIndexes({KEY:1})

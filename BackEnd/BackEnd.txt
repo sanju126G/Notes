@@ -1,0 +1,7 @@
+Node JS note
+
+1. What Is Node JS ?.
+	-> Node JS is a platform built on chrome's javascript engine (V8).
+	-> it is used to build fast, scallable network applications.
+	-> it uses an event-driven, non-blocking I/O model that makes it lightWeight and efficient, making it perfect for building real-time applications.
+	-> In other Words, Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.
