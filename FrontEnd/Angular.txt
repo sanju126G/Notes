@@ -50,12 +50,17 @@ behaviorsubject
 
 20)how to do unit testing in angular using karma/jasmine.
 
+21)what are all the methods we can use on observables
+
 
 
 1. What is angular ?.
 	-> The Angular is a development platform for building a Single Page Application for mobile and desktop.
 	-> It uses Typescript & HTML to build Apps. The Angular itself is written using the Typescript.
 	-> It comes with features like component, Modules, Directives, Forms, Pipes, HTTP Services, Dependency Injection, Data Binding , Routing, etc..,
+
+1.1 What do you mean by single page applications.?
+	-> A single-page application is an app that doesn’t need to reload the page during its use and works within a browser.
 
 2. Components :- 
 	-> In Angular, components are the basic building blocks, which control a part of the UI for any application.
@@ -78,7 +83,7 @@ behaviorsubject
 	-> Directives can extend, Change  or modify behavior of the DOM elements.
 	-> Angular suports four types of Directives.
 		1.Component Directive.
-             -> directives with a template. This type of directive is the most common directive type.
+             -> Directives with a template, Most common directive used throughout the app
 
 		2.Attribut Directives.
             -> directives that change the appearance or behavior of an element, component, or another directive.
@@ -101,17 +106,97 @@ behaviorsubject
 			-> custom directive is a user-defined directive that provides users to use desired functions to extend HTML functionality.
 			-> Command to generate directive using cli is :-- ng g d directiveName.
 
+4.1 Angular forms.?
+	-> There are two types o form in angular.
+
+	1.Template Driven Forms [TDF].
+		-> Fully programmed in component’s template.
+		-> Angular is responsible for generating the JS Object Representation of the form.
+		-> Template defines structure of the form.
+		-> Validation rules are also defined in the template.
+		-> syntax of TDF :-
+
+			<form #myForm="ngForm" (ngSubmit)="submit(myForm)">
+
+				<div class="form-group">
+					<label>Name</label>
+					<input type="text" class="form-control" name="name" [(ngModel)]="model.name" required>
+				</div>
+
+				<div class="form-group">
+					<label>Email</label>
+					<input type="email" class="form-control" name="email" [(ngModel)]="model.email" required>
+				</div>
+
+				<div class="form-group">
+					<label>Password</label>
+					<input type="password" class="form-control" name="password" [(ngModel)]="model.password" required>
+				</div>
+
+				<div class="form-group">
+					<button class="btn btn-primary btn-block" type="submit">Submit</button>
+				</div>
+			</form>
+
+	2. Reactive Forms.
+		-> Form model created programmatically in the code (typescript code).
+		-> Template can be dynamically generated based on the model.
+		-> FormControls and FormGroups can be added dynamically in FormArrays.
+		-> syntax of reactive form.
+		
+		->inside component class
+
+			class ReactiveForm {
+				reactiveForm:FormGroup
+
+				constructor () {
+					this.reactiveForm = new FormGroup({
+						name:new FormControl('', [Validators.required, Validators.minLength(5)]),
+						email: new FormControl('', [Validators.required, Validators.email]),
+						password: new FormControl('', [Validators.required, Validators.minLength(8)])
+					})
+				}
+
+				onSubmit() {
+					console.log(this.reactiveForm.value);
+				}
+			}
+		
+		-> inside template
+			<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+
+				<input type="name" formControlName="name">
+					<div *ngIf="reactiveForm.name.touched && reactiveForm.name.invalid" class="alert alert-danger">
+           				<div *ngIf="reactiveForm.name.errors.required">Name is required.</div>
+           				<div *ngIf="reactiveForm.name.errors.minlength">Name should be 3 character.</div>
+        			</div>
+
+				<input type="email" formControlName="email">
+				<div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
+           			<div *ngIf="f.email.errors.required">Email is required.</div>
+            		<div *ngIf="f.email.errors.email">Please, enter valid email address.</div>
+        		</div>
+
+				<input type="password" formControlName="password">
+
+				<button type="submit">submit form</button>
+
+			</form>
+
 5. Pipes ?.
 	-> The Angular Pipe takes the raw data as input and then transforms the raw data into some desired format.
 	-> So in simple words, we can say that the angular pipes transform the data into a specific format before displaying them to the end-users.
 	-> There Are four Types of pipes that we can use in angular :-
 		1. Built-in pipes
-			-> lowercase.
+			-> lowercase. 
 			-> uppercase.
 			-> currency.
-			-> date.
+			-> date. For example :- {{today | date}}  which gives the output "April 16, 2018 "
+			-> decimal.
+			-> percent.
 		2. parameterized Pipes
 			-> we can pass one are more parameters to pipe.
+			-> for example:- {{today | date : ‘fullDate’}}  which gives the output "Monday, April 16, 2018 "
 
 		3. chaining pipes.
 			-> we can connect multiple pipes to a single data input.
@@ -120,6 +205,7 @@ behaviorsubject
 			-> In addtion to built-in pipes we can also create our own pipes using the Command ng g p <pipeName>
 
 6. Services :-
+	-> An angular service is simply a Class that allows you to access it’s defined properties and methods
 	-> Services are objects which get instantiated only once during the lifetime of an application. 
 	-> The main objective of a service is to share data, functions with different components of an Angular application.
 	-> A service is defined using a @Injectable decorator. A function defined inside a service can be invoked from any component or directive.
@@ -142,7 +228,7 @@ behaviorsubject
 					2. Style Binding. []
 					3. class Binding. []
 					4. property Binding. []
-					5. Attribute Binding. attr.attributeName
+					5. Attribute Binding. attr.attributeName for example:- <th attr.colspan={{colSpan}}></th>
 			   	-> View to Component. 
 			   		1. Event Binding.
 			-> Two Way Data Binding. 
@@ -151,7 +237,6 @@ behaviorsubject
 9. Routing in angular ?.
 	-> Angular routing is the method to direct the users to the relevant page that they want to perform their actions.
 	-> In other words, There may be multiple components in a single angular app. Routing is the way to implement the connection between those components.
-	-> 
 
 10. lifecycle hooks in Angular ?.
 	-> Every component in Angular has a lifecycle, different phases it goes through from the time of creation to the time it's destroyed.
@@ -179,7 +264,6 @@ behaviorsubject
 		8. ngOnDestroy( ) :-
 			-> It gets called just before Angular destroys the component. This hook can be used to clean up the code and detach event handlers.
 
-
 11. Explain string interpolation and property binding in Angular.
 	-> Data-binding is a feature in angular, which provides a way to communicate between the component(Model) and its view(HTML template).
 	-> Data-binding can be done in two ways, one-way binding and two-way binding.
@@ -200,4 +284,4 @@ behaviorsubject
 14. What is RxJs in angular .?
 	-> RxJs is a library for Composing and event-based programm by using observables sequences.
 	-> it provides one core type, the Observable, satellite types (Observer,Schedulers,Subjects) 
-	 and operators and operators inspired by Array#extras(map,filter,reduce,every,ect) to allow handling Asynchronous events as collections)
+	   and operators inspired by Array#extras(map,filter,reduce,every,ect) to allow handling Asynchronous events as collections)
