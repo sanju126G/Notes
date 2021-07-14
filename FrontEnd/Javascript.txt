@@ -90,6 +90,57 @@ Javascript Notes
 		2. Non-Primitive Data type.(mutable)
 			-> Object,Arrays,Functions.
 
+4.1 Array methods.
+	-> javascript provides some of the bulit in methods we can use
+	1.forEach(( callback( value, index) )),
+	2. isArray( array ),
+	3. includes(searchElement, fromIndex ),
+	4. push(items), The push () method adds new items to the end of an array, and returns the new length
+	5. pop(), The pop () method takes a single argument (index).The argument passed to the method is optional. If not passed, the default index -1 is passed as an argument (index of the last item).
+	6. shift(),
+	7. number unshift(items),
+	8.  array splice(start index, delete count, items),
+	9. array slice( start index, end index),
+	10. string join( separator ),
+	11.  number indexOf( searchElement, fromIndex ),
+	12. array map(( callback( value, index) )),
+	13. array filter(( callback( value,index) )).
+
+4.2 String methods.
+	1. toLowerCase(), 
+	2. toUpperCase(), 
+	3. charAt( position ),
+	4. indexOf( searchString, position ), 
+	5. concat(…strings),
+	6. includes(search String),
+	7. start (position),
+	8. replace(search Value, replaceValue), 
+	9. substr( start, length ),
+	10.trim().
+
+4.3 Date Object.
+			Method 					Description
+		getFullYear()		Get the year as a four digit number(yyyy)
+		getMonth()			Get the month as a number (0-11)
+		getDate() 			Get the day as a number (1-31)
+		getHours() 			Get the hour (0-23)
+		getMinutes() 		Get the minute (0-59)
+		getSeconds() 		Get the second (0-59)
+		getMilliseconds()	Get the millisecond (0-999)
+		getTime() 			Get the time (milliseconds since January 1, 1970)
+		getDay() 			Get the weekday as a number (0-6)
+		Date.now() 			Get the time. ECMAScript 5
+
+4.4 Math Object.
+	-> Math.PI 					 – returns pi value.
+	-> Math.round(x)			 - returns the value of x rounded to its nearest integer.
+	-> Math.pow(x , y)			 - returns the value of x to the power of y.
+	-> Math.sqrt(x) 			 - returns the square root of x.
+	-> Math.abs(x) 				 - returns the absolute (positive) value of x.
+	-> Math.ceil(x)				 - returns the value of x rounded up to its nearest integer.
+	-> Math.floor(x)			 - returns the value of x rounded down to its nearest integer.
+	-> Math.min() and Math.max() - can be used to find the lowest or highest value in a list of arguments.
+	-> Math.random() 			 - returns a random number between 0 (inclusive), and 1 (exclusive)
 
 
 5. Javascript Variables?
@@ -248,6 +299,34 @@ Dom Events.
 
 21. What is DOM ?.
 	-> The DOM stands for Document Object Model. When a browser loads a web page, then the browser creates the Document Object Model (DOM) for that page.
+	-> The Document Object Model (DOM) is a programming interface for HTML and XML documents, which can be modified with a scripting language such as JavaScript
+
+21.1 Dom Methods.
+	1.write(),
+	2. createElement( element ),
+	3. getElementById( id name ),
+	4. getElementsByTagName( tag name ), 
+	5. getElementsByClassName( class name ),
+	6. querySelector( tag or id or class ), 
+	7. querySelectorAll( tag or id or class ),
+	8. appendChild( element ).
+
+21.2 Dom properities.
+	1.firstChild, 
+	2.firstElementChild,
+	3. lastChild,
+	4. lastElementChild,
+	5. removeChild,
+	6. className,
+	7. classList, 
+	8.childNodes.
+
+21.3 DOM Events.
+	1.onclick,
+	2. onmouseover,
+	3. onmouseout,
+	4. onkeyup,
+	5. onkeydown.
 
 22. HTML Attribute VS DOM Property with Example
 	-> Consider the below example :- 
@@ -335,6 +414,14 @@ Dom Events.
 
 
 26.what are all the methods we can use on observables
+
+27. Template strings(``).
+	-> console.log(`This is template strings using which we can effectively join the variables and striings`)
+
+
+
+
+
 
 
 Type Script

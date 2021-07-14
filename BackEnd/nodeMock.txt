@@ -1,5 +1,6 @@
 1. What is node js ?.
-    -> node js is a open source, cross-paltform, run time environment that runs on V8 engine and excutes javascript outside web browsers.
+    -> Node JS is an Open Source Java Script Platform used to develop fast and scalable server-side and networking applications very easily.
+    -> in other words node js is a open source, cross-paltform, run time environment that runs on V8 engine and excutes javascript outside web browsers.
     ->  Node.js can be used to build different types of applications such as command line application, 
          web application, real-time chat application, REST API server etc. However, it is mainly used to build 
          network programs like web servers, similar to PHP, Java, or ASP.NET.
@@ -78,4 +79,27 @@
     -> There is no need to install it. Being part of the Node.js core, it can be used by simply requiring it as below:
          const fs = require('fs')
     -> Once you do so, you have access to all its methods, which include:
-        1. fs.access(): check if the file exists and Node.js can access it with its permissions
+    -> directory methods
+        1. fs.access(): check if the file exists and Node.js can access it with its permissions.
+        2. fs.mkdir(): this is method will create a directory, it will take two arguments the path(the path where we want to create the file) 
+                        and a callback function (this call back funtion can be used to handle errors if there is any, like the given path not found error)
+        3. fs.readdir(): this function can be used to read all the files inside a specified directory. it also take same arguments like mkdir()
+        4. fs.rmdir(): this function is used to delete the existing directory. arguments is same as above methods.
+        5. existsSync() : this method will give us the boolean Values. it'll take one argument which is the path of the directory which needs to be deleted.
+    
+    -> file methods 
+        1. writeFile('path','content of the file', ()=>{}) 
+        2. readFile('path', ()=>{}) 
+        3. appendFile('path','content of the new file', ()=>{}) 
+        4. renameFile('path','new name of the file', ()=>{}) 
+        5. unlinkFile('path',()=>{})
+        6. open("path", ()=>{})
+        7. close("path",()=>{})
+    
+    -> createWriteStream( 'path', {encodeing:'utf-8'})
+    -> createReadStream( 'path', {encodeing:'utf-8'})
+    ->readStream.pipe(WriteStream)
+
+9. Events module:-
+    -> 
+
