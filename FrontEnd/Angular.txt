@@ -285,3 +285,20 @@ behaviorsubject
 	-> RxJs is a library for Composing and event-based programm by using observables sequences.
 	-> it provides one core type, the Observable, satellite types (Observer,Schedulers,Subjects) 
 	   and operators inspired by Array#extras(map,filter,reduce,every,ect) to allow handling Asynchronous events as collections)
+
+15. Compilation in angular .?
+	-> An angular application mainly consists of HTML templates, their components which include various TypeScript files. 
+	-> There are some unit testing and configuration file. 
+	-> Whenever we run over an application, the browser cannot understand the code directly, hence we have to compile our code.
+	-> angular provides two ways to compile our project 1. AOT Compiler and JIT Compiler
+	-> By default, aot is set to true for new CLI applications.
+
+	-> What is Ahead of Time (AOT) compiler ?
+		-> In simple words, when you serve/build your angular application, the Ahead of Time compiler converts your code during the build time before your browser downloads and runs that code.
+		-> From Angular 9, by default compiling option is set to true for ahead of time compiler. 
+
+	-> what is Just In Time compiler ?
+		-> Just in time compiler compiles each file separately and it’s mostly compiled in the browser. 
+		-> You don’t have to build your project again after changing your code.
+		-> Most compiling is done on the browser side, so it will take less compiling time.
+		-> Just in Time compiler is best when your application is in local development.
