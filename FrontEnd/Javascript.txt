@@ -55,30 +55,21 @@ Javascript Notes
 			-> Static Typing means when you create a variable you need to tell the computer what kind of data will be stored in it (Text, Numeric, something else...) and you can't change it after the fact.
 			-> Dynamic Typing means you don't need to tell the computer what kind of data will be stored in a variable when you create it. The types are checked as the program runs (at "runtime").
 
-
-
 2. Features of javaScript?
-	
 	-> JavaScript is case sensitive.
 	-> JavaScript is object based language as it provides predefined objects.
-		-> for ex:- 	1. Date( ) Object.
-				2. Math	object.
+		-> for ex:- 1. Date( ) Object.
+					2. Math	object.
 	-> And also Predefined methods.
 	-> JavaScript follows the syntax and structure of the C programming language. Thus, it is a structured programming language.
 
-
-
 3. Applications of Javascript Programming?
-
 	-> Client side validation.
 	-> Manipulating HTML Pages.
 	-> User Notifications.
 	-> Back-end Data Loading.
 	-> Presentations.
 	-> Server Applications. for ex:- Express,Meteor,Next.js.
-
-
-
 
 4. JavaScript Datatypes ?
 	-> Data types basically specify what kind of data can be stored and manipulated within a program.
@@ -99,10 +90,10 @@ Javascript Notes
 	5. pop(), The pop () method takes a single argument (index).The argument passed to the method is optional. If not passed, the default index -1 is passed as an argument (index of the last item).
 	6. shift(),
 	7. number unshift(items),
-	8.  array splice(start index, delete count, items),
+	8. array splice(start index, delete count, items),
 	9. array slice( start index, end index),
 	10. string join( separator ),
-	11.  number indexOf( searchElement, fromIndex ),
+	11. number indexOf( searchElement, fromIndex ),
 	12. array map(( callback( value, index) )),
 	13. array filter(( callback( value,index) )).
 
@@ -142,7 +133,6 @@ Javascript Notes
 	-> Math.min() and Math.max() - can be used to find the lowest or highest value in a list of arguments.
 	-> Math.random() 			 - returns a random number between 0 (inclusive), and 1 (exclusive)
 
-
 5. Javascript Variables?
 
 	-> Variables can be thought of as named containers. You can place data into these containers and then refer to the data simply by naming the container.
@@ -156,8 +146,6 @@ Javascript Notes
 		3. const.(local scope with Constant values)
 			-> All of these three key words provide the same functionality where as the only diffrence between them is the scopes of those variable.
 
-
-
 6. JavaScript Operators:-
 	-> JavaScript operators are symbols that are used to perform operations on operands.
 	-> JavaScript supports the following types of operators.
@@ -168,8 +156,6 @@ Javascript Notes
 		5. Conditional (or ternary) Operators.
 		6. typeof Operator.
 
-
-
 7. Conditional statements:- 
 	1. If-else statements
 		-> if Statement.
@@ -178,8 +164,6 @@ Javascript Notes
 	
 	2. Switch Case Statement.
 
-
-
 8. looping Statements :-
 	1. while loops.
 		-> while loop.
@@ -187,8 +171,6 @@ Javascript Notes
 	2. for loop.
 	3. for-in loop.
 	4. for-of loop.
-
-
 
 9. javascript Functions:-
 	-> A function is a group of reusable code which can be called anywhere in your program. Thus it enables the code reusablity.
@@ -205,6 +187,7 @@ Javascript Notes
 
 		3. IIFE(Immediately Invoked Function Expression).
 			-> syntax (function ( args ) { statements }) ().
+
 		4.  Arrow Function.
 			-> syntax  (args) => { Statements }
 	
@@ -214,9 +197,6 @@ Javascript Notes
 		-> Functions that take the additional function as a parameter are called higher-order functions.
 		-> and the function which passes as an argument is called a callback function. 
 
-
-
-
 10. JavaScript  Events:-
 
 	-> JavaScript's interaction with HTML is handled through events that occur when the user or the browser manipulates a page.
@@ -224,26 +204,18 @@ Javascript Notes
 	   and virtually any other type of response imaginable.
 	-> Events are a part of the Document Object Model (DOM) Level 3 and every HTML element contains a set of events which can trigger JavaScript Code.
 
-
-
 11. Synchronous And Asynchronous Programming ?.
 	Synchronous :- 
 		-> Synchronous Codes will execute in a sequential manner. which means one after the other line by line.
 		-> Asynchronous code will excute in a non-sequential manner. which means it's completly dependent on that codes how much delay it'll take.
 
-
-
 12. Why do we need call back funtcion ?.
-	-> This is called asynchronous programming. Callbacks make sure that a function is not going to run before a task is completed but will run right after the task has completed.
 	-> It helps us develop asynchronous JavaScript code and keeps us safe from problems and errors.
+	-> This is called asynchronous programming. Callbacks make sure that a function is not going to run before a task is completed but will run right after the task has completed.
 	-> Senario where we need Call back functions :- 
 		-> Basically the use of callback helps us when we need to use the result of the first function into another function,
 	   	   and of course we can use it in a direct way but what if the first function did not respond to any result and we have already passed it to lower function,
 	   	   then it will results to undefined and later if one had tried to mutate that passed value it will result in error like can not mutate or assign value of undefined.
-
-
-
-
 
 13. what is "this" key word in javascript ?.
 	-> Basically, ‘this’ keyword is used to refer to some object or function in JavaScript.
@@ -251,58 +223,45 @@ Javascript Notes
 			-> All the object-oriented programming languages such as C++, Java, etc. provides the “this” keyword to refer to an instance of an object from within class definition.
 			-> But the “this” keyword in JavaScript has varying usage and creates a lot of confusion in JavaScript.
 			-> This confusion is because the behavior of “this” in JavaScript is different if we compare it with another programming language, as it always has a different contextual meaning depending on where its put to use.
-			-> 	Usage (Context)	    		    Refers to
-				In a Method	  		Owner Object(Which invoked method).
-				Alone		  		Global Object.
+			-> 	Usage (Context)	    		 	   Refers to
+				In a Method	  					Owner Object(Which invoked method).
+				Alone		  					Global Object.
 				In a function (Default Mode)	Global Object.
-				In a function (Strict Mode)	undefined.
-				In an event			The element that received the event.
-
-
+				In a function (Strict Mode)		undefined.
+				In an event						The element that received the event.
 
 14. What is meta Data ?.
 	-> Metadata is simply data about data. It means it is a description and context of the data. It helps to organize, find and understand data.
 	-> Example :- Each book has a number of standard metadata on the covers and inside. Cover Page, Table of contents, Summary all of these are meta data that gives picture of what that book is all about.
 
-
-
-
 15. what is variable hoisting in javascript.
 	-> Hoisting is a default behaviour of javascript where all the variable and function declarations are moved on top.
 	-> This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
 
-
-
 16. Difference between “ == “ and “ === “ operators.
 	-> Both are comparison operators. The difference between both the operators is that,“==” is used to compare values whereas, “ === “ is used to compare both value and types.
-
 
 17. What is Implicit Type Coercion in javascript.
 	-> Implicit type coercion in javascript is automatic conversion of value from one data type to another. It takes place when the operands of an expression are of different data types.
 	-> String coercion takes place while using the ‘ + ‘ operator. When a number is added to a string, the number type is always converted to the string type.
 
-
 18. What is pass-by-value and pass-by-refernce ?.
 	-> In JavaScript, primitive data types are passed by value and non-primitive data types are passed by reference.
-
 
 19. What is closures in javascript ?.
 	-> In programming languages, a closure, also lexical closure or function closure, is a technique for implementing lexically scoped name binding in a language with first-class functions.
 	-> Operationally, a closure is a record storing a function together with an environment. 
 
-
 20. What is memoization?
 	-> Memoization is a form of caching where the return value of a function is cached based on its parameters.
 	-> If the parameter of that function is not changed, the cached version of the function is returned.
-
-Dom Events.
 
 21. What is DOM ?.
 	-> The DOM stands for Document Object Model. When a browser loads a web page, then the browser creates the Document Object Model (DOM) for that page.
 	-> The Document Object Model (DOM) is a programming interface for HTML and XML documents, which can be modified with a scripting language such as JavaScript
 
 21.1 Dom Methods.
-	1.write(),
+	1. write(),
 	2. createElement( element ),
 	3. getElementById( id name ),
 	4. getElementsByTagName( tag name ), 
@@ -312,17 +271,17 @@ Dom Events.
 	8. appendChild( element ).
 
 21.2 Dom properities.
-	1.firstChild, 
-	2.firstElementChild,
+	1. firstChild, 
+	2. firstElementChild,
 	3. lastChild,
 	4. lastElementChild,
 	5. removeChild,
 	6. className,
 	7. classList, 
-	8.childNodes.
+	8. childNodes.
 
 21.3 DOM Events.
-	1.onclick,
+	1. onclick,
 	2. onmouseover,
 	3. onmouseout,
 	4. onkeyup,
@@ -351,8 +310,6 @@ Dom Events.
 	-> They can handle multiple asynchronous operations easily and provide better error handling than callbacks and events.
 	-> Promise Consumers
 		-> Promises can be consumed by registering functions using .then and .catch methods.
-
-
 
 24. async And await uses in java script ?.  async and await*
 	-> JavaScript is always synchronous and single-threaded that provides the event loops. 
@@ -411,8 +368,6 @@ Dom Events.
 		-> var myContentHolder = document.getElementById("content");
 		   myContentHolder.innerHTML = "<p>This is the dynamic content created by the innerHTML property</p>";
 
-
-
 26.what are all the methods we can use on observables
 
 27. Template strings(``).
@@ -421,10 +376,7 @@ Dom Events.
 
 
 
-
-
-
-Type Script
+***************************************** Type Script ****************************************************************
 
 1. What is TypeScript?
 	-> TypeScript is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language.
