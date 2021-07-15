@@ -110,5 +110,51 @@
 17. express.urlencoded([options]).
     -> This is a built-in middleware function in Express. It parses incoming requests with urlencoded payloads and is based on body-parser.
 
+18. Dependencies in express.
+    -> "dependencies": {
+            "bcrypt": "^5.0.1",
+            "dotenv": "^10.0.0",
+            "express": "^4.17.1",
+            "joi": "^13.1.0",
+            "jsonwebtoken": "^8.5.1",
+            "lodash": "^4.17.4",
+            "mongoose": "^5.0.1",
+            "nodemon": "^2.0.9"
+        } 
 
+19. bcrypt module.
+    -> Bcrypt provides both asynchronous and synchronous password hashing methods.
+    ->  The asynchronous mode is recommended because hashing is a CPU intensive task, 
+        and the synchronous approach will block the event loop and prevent your application from handling any other incoming requests or events.
+    -> In order to use bcrypt in our project frist we need to instal that dependencies from npm 
+        npm install bcrypt@version.
+    -> after installing we can import that module anywhere in our project and use the functionalities of bcrypt.
+    -> steps to hash our password. 
+        -> const bcrypt = require('bcrypt');
+        -> const salt = await bcrypt.genSalt(10);
+        -> user.password = await bcrypt.hash(user.password,salt)
 
+20. dotenv module.
+    -> The dotenv is a zero-dependency module that loads environment variables from a .env file into process.env .
+    -> Environment variables. 
+        -> Environment variables allow us to manage the configuration of our applications separately from our codebase.
+    -> steps to configure environment variables. 
+        -> require('dotenv').config();
+        -> const port = process.env.PORT || 4500;
+        -> after this we can use this variable which have the port number.
+
+21. joi module.
+    -> Joi module is a popular module for data validation. 
+    -> his module validates the data based on schemas.
+    -> There are various functions like optional (), required (), min (), max (), etc 
+        which make it easy to use and a user-friendly module for validating the data.
+    -> steps to validate the data using joi. 
+        -> const Joi = require('joi');.
+        -> const schema = {
+                name: Joi.string().min(5).max(50).required(),
+                email: Joi.string().min(5).max(250).required().email(),
+                password: Joi.string().min(5).max(255).required(),
+            };
+        -> return Joi.validate(user, schema);
+
+22. jsonwebtoken module.
