@@ -22,151 +22,133 @@ step-6 -> open a new window and move to desktop and run mongo it'll give you acc
 ----------------------------------------mongodb Theory------------------------------------------------
 
 1. What is mongodb .?
+	-> MongoDB is a cross-platform, document oriented database that provides, high performance, high availability, and easy scalability.
+	-> MongoDB works on concept of collection and document.
+
 	-> MongoDB is a distributed database at its core, so high availability, horizontal scaling, and geographic distribution are built in and easy to use MongoDB is free to use.
 		1.High Availablity:
 		->High Availability (HA) describes systems that are dependable enough to operate continuously without failing. 
 		2.horizontal scaling:
 		->
 	->  MongoDB uses indexing in order to make the query processing more efficient.
+	
+2. Database in mongodb.
+	-> Database is a physical container for collections. 
+	-> Each database gets its own set of files on the file system.
+	-> A single MongoDB server typically has multiple databases.
+	-> One Hard Disk can contain many Databases , one Database can contain many collections and a collection can contain many documents.
 
-2. What is Collections in mongodb .?
-	-> Collection in MongoDB is group of related documents that are bound together.
-	-> The collection does not follow any schema which is one of the remarkable feature of MongoDB. 
+3. Collection in mongodb.
+	-> Collection is a group of MongoDB documents. 
+	-> It is the equivalent of an RDBMS table. 
+	-> Collections do not enforce a schema.
+	-> Documents within a collection can have different fields.
+
+3. Document in mongodb.
+	-> A document is a set of key-value pairs.
+	-> Documents have dynamic schema.
+	-> Dynamic schema means that documents in the same collection do not need to have the same set of fields or structure.
+	-> and common fields in a collection's documents may hold different types of data.
+
+4. JSON.
+	-> JSON stands for JavaScript Object Notation.
+	-> JSON is a lightweight format for storing and transporting data.
+	-> JSON is often used when data is sent from a server to a web page.
+	-> JSON is "self-describing" and easy to understand.
+
+5. advantages of MongoDB.
+	-> Schema less − MongoDB is a document database in which one collection holds different documents. 
+		Number of fields, content and size of the document can differ from one document to another.
+	-> Structure of a single object is clear.
+	-> Ease of scale-out − MongoDB is easy to scale.
+	-> No complex joins.
 
 ----------------------------------------mongodb Commands------------------------------------------------
 
 >show dbs :- to view the existing database 
-admin   0.000GB
-config  0.000GB
-demo    0.000GB
-local   0.000GB
+	admin   0.000GB
+	config  0.000GB
+	demo    0.000GB
+	local   0.000GB
 
 >use <database_name> :- It'll check if the given database is exist or not in that given name. if it exists it'll switch to that database.
-			if it doesn't it'll create a new database and switch to that database.
+						if it doesn't it'll create a new database and switch to that database.
 
 >db.createCollection("employee") :- it'll create A new collection inside selected database by the name of employee.
-				   -> collections are nothing but data.
-{ "ok" : 1 }
+	{ "ok" : 1 }
 
 > show collections  :- will print all the collections inside selected database.
-emp
-sanjay
-test
+	emp
+	sanjay
+	test
 
 > db.collectionName.insert({object properties}) :- this query will write the data into specified collection.
-WriteResult({ "nInserted" : 1 })
+	WriteResult({ "nInserted" : 1 })
 
 > db.collectionName.insertOne({object properties}) :- the insertone method used to store one data into collection.
-{
-        "acknowledged" : true,
-        "insertedId" : ObjectId("60d334275fbc7d3357712690")
-}
+	{
+			"acknowledged" : true,
+			"insertedId" : ObjectId("60d334275fbc7d3357712690")
+	}
 
 > db.collectionName.insertMany([{objects}]):- this insertMany() is used store multiple data.
- example :- 
-db.emp.insertMany([
-...     {
-...         _id:1234,
-...         name:"Priyanka",
-...         email:"priyanka@gmail.com",
-...         salary:3000,
-...         dept:10,
-...         address:{
-...             dno:123,
-...             street:"basavanagudi",
-...             city:"bangalore",
-...             pincode:560086
-...         },
-...         phone:[1111111111,2222222222]
-...     },
-...     {
-...         _id:1235,
-...         name:"Dharini",
-...         email:"dharini@gmail.com",
-...         salary:7000,
-...         dept:10,
-...         address:{
-...             dno:564,
-...             street:"MG road",
-...             city:"bangalore",
-...             pincode:522003
-...         },
-...         phone:[6666666666]
-...     },
-...     {
-...         _id:1236,
-...         name:"Sanjay",
-...         email:"sanjay@gmail.com",
-...         salary:2000,
-...         dept:20,
-...         address:{
-...             dno:456,
-...             street:"banshankri",
-...             city:"bangalore",
-...             pincode:560085
-...         },
-...         phone:[7777777777]
-...     },
-...     {
-...         _id:1237,
-...         name:"Abbas",
-...         email:"abbas@gmail.com",
-...         salary:6000,
-...         dept:30,
-...         address:{
-...             dno:789,
-...             street:"Jayanagar",
-...             city:"chennai",
-...             pincode:546733
-...         },
-...         phone:[3333333333,9999999999]
-...     },
-...     {
-...         _id:1238,
-...         name:"Sivaji",
-...         email:"sivaji@gmail.com",
-...         salary:10000,
-...         dept:20,
-...         address:{
-...             dno:342,
-...             street:"MG road",
-...             city:"bangalore",
-...             pincode:522003
-...         },
-...         phone:[8888888888]
-...     },
-...     {
-...         _id:1239,
-...         name:"Sateesh",
-...         email:"sateesh@gmail.com",
-...         salary:9000,
-...         dept:30,
-...         address:{
-...             dno:898,
-...             street:"MG road",
-...             city:"hyderabad",
-...             pincode:517644
-...         },
-...         phone:[1234567898]
-...     },
-...
-...
-... ])
-{
-        "acknowledged" : true,
-        "insertedIds" : [
-                1234,
-                1235,
-                1236,
-                1237,
-                1238,
-                1239
-        ]
-}
+	example :- 
+	db.emp.insertMany([
+	...     {
+	...         _id:1234,
+	...         name:"Priyanka",
+	...         email:"priyanka@gmail.com",
+	...         salary:3000,
+	...         dept:10,
+	...         address:{
+	...             dno:123,
+	...             street:"basavanagudi",
+	...             city:"bangalore",
+	...             pincode:560086
+	...         },
+	...         phone:[1111111111,2222222222]
+	...     },
+	...     {
+	...         _id:1235,
+	...         name:"Dharini",
+	...         email:"dharini@gmail.com",
+	...         salary:7000,
+	...         dept:10,
+	...         address:{
+	...             dno:564,
+	...             street:"MG road",
+	...             city:"bangalore",
+	...             pincode:522003
+	...         },
+	...         phone:[6666666666]
+	...     },
+	...     {
+	...         _id:1236,
+	...         name:"Sanjay",
+	...         email:"sanjay@gmail.com",
+	...         salary:2000,
+	...         dept:20,
+	...         address:{
+	...             dno:456,
+	...             street:"banshankri",
+	...             city:"bangalore",
+	...             pincode:560085
+	...         },
+	...         phone:[7777777777]
+	...     }
+	... ])
+	{
+			"acknowledged" : true,
+			"insertedIds" : [
+					1234,
+					1235,
+					1236
+			]
+	}
 
 > db.collectionName.find() :- this find() method will display all data inside specified collection.
 
->db.collectionName.find({selection},{projection}) :- we can use these properities where selection is the condition used to segregate the data.
+> db.collectionName.find({selection},{projection}) :- we can use these properities where selection is the condition used to segregate the data.
 						     and the projection tells the db what to display based on that selection.
 
 example:-
@@ -178,7 +160,7 @@ example:-
 >> db.emp.find({dept:10})
 
 0.2 To display emial id of all the employees whoose salary is 2000
->> db.emp.find({salary:2000},{email:1,_id:0}
+>> db.emp.find({salary:2000},{email:1,_id:0})
 
 0.3 To display name and dno of all the employees who resides in bangalore
 >> db.emp.find({"address.city":"bangalore"},{name:1,"address.dno":1,_id:0}
@@ -223,30 +205,55 @@ example:-
 >> db.emp.find({"address.city":"bangalore"},{name:1,"address.street":1,_id:0})
 
 14. To display all the employees whoose salary is not greater than 5000.
+-> not
 >> db.emp.find({salary:{$not:{$gt:5000}}}).pretty()
 
 15. To display all the employee names whoose salary is less than 5000 and city is bangalore.
+-> and
 >> db.emp.find({$and:[{"address.city":"bangalore"},{salary:{$lt:5000}}]},{name:1,salary:1,_id:0}).pretty()
+-> or
+>> db.emp.find({$or:[{"address.city":"bangalore"},{salary:{$lt:5000}}]},{name:1,salary:1,_id:0}).pretty()
+-> nor
+>> db.emp.find({$nor:[{"address.city":"bangalore"},{salary:{$lt:5000}}]},{name:1,salary:1,_id:0}).pretty()
 
 16. To display all the employees who has the field temprorary.
+-> exists operator.
 >>  db.emp.find({temprorary:{$exists:true}})
 
 17. To display all the employees whoose salary type is of string.
 >> db.emp.update({_id:1234},{$set:{salary:"three thousand"}})
 	WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+-> type operator.
 >> db.emp.find({salary:{$type:"string"}}).pretty()
 
+->limit() method
 18. To display only 3 employee names on a selected collection.
 >> db.emp.find().limit(3).pretty()
 
+-> count() method.
 19. To display the number of data inside the selected colection.
 >> db.emp.find().count().pretty()
 
+-> sort() method.
 20. To display all the employees in a asscending order based on their salary.
 >> db.emp.find().sort({salary:1}).pretty()
 >>db.emp.find().sort({salary:-1}).pretty()
 
 Update method and it's operator's
+-> this update method will take three objects. which is selection updation and options.
+	syntax: db.collection_name.update({selection}, {updation}, {options})
+
+-> Update Operators.
+	-> $set - { $set: { <field1>: <value1>, ... } }
+	-> $unset - { $unset: { <field1>: "", ... } }
+	-> $rename - {$rename: { <field1>: <newName1>, <field2>: <newName2>, ... } }
+	-> $inc - { $inc: { <field1>: <amount1>, <field2>: <amount2>, ... } }
+	-> $mul - { $mul: { <field1>: <number1>, ... } }
+	-> $min - { $min: { <field1>: <value1>, ... } }
+		-> The $min updates the value of the field to a specified value if the specified value is less than the current value of the field. 
+	-> $max - { $max: { <field1>: <value1>, ... } }
+		-> The $max operator updates the value of the field to a specified value if the specified value is greater than the current value of the field.
 
 21. To update the salary field as sal.
 >> db.emp.update({},{$rename:{salary:"sal"}})
@@ -294,7 +301,25 @@ the min operator updates the value of the field to a specified value if the the 
 >> db.courses.remove({price:7000})
 WriteResult({ "nRemoved" : 1 })
 
+30.To remove a collection form database.
+>> db.customers.drop()
+-> this will return true or false.
+
+31. How to remove database in mongodb.
+>> db.dropDatabase()
+	{ "dropped" : "tutorialkart", "ok" : 1 }
+
 //Aggregate method
+
+	-> $project − Used to select some specific fields from a collection.
+	-> $match   − This is a filtering operation and thus this can reduce the amount of documents that are given as input to the next stage.
+	-> $group   − This does the actual aggregation as discussed above.
+	-> $sort    − Sorts the documents.
+	-> $skip    − With this, it is possible to skip forward in the list of documents for a given amount of documents.
+	-> $limit   − This limits the amount of documents to look at, by the given number starting from the current positions.
+	-> $unwind  − This is used to unwind document that are using arrays. When using an array, the data is 
+					kind of pre-joined and this operation will be undone with this to have individual documents again. 
+					Thus with this stage we will increase the amount of documents for the next stage.
 
 1. $match
 >> db.emp.aggregate({$match:{_id:1235}})
