@@ -1,0 +1,114 @@
+1. What is Express JS.
+    -> Express JS is a Light-weight, open source Web Framework to develop Web Applications very easily and quickly in Node JS Platform.
+    -> It is flexible as there are numerous modules available on npm, which can be directly plugged into Express.
+    -> Latest Express JS Framework version is : 4.x.
+    -> Express JS Official Website: https://expressjs.com.
+
+2. Features of express.
+    -> Express JS Framework provides the following features
+        -> Light-weight Web Application Framework
+        -> It Supports Routings
+        -> It supports Template Engines
+        -> It supports File Uploading
+        -> Develop SPA(Singe Page WebApplications)
+        -> Develop Real-time Applications
+
+3. Why do we need to create app instence in order to work with express .?
+    -> The express() function is a top-level function exported by the express module.
+    -> In order to create express application we need to create a instence of this top level function.
+
+4. listen() method in express.
+    -> using this method we can listen to the server.
+    -> for example:- app.listen(3000).
+
+5. HTTP Methods
+    -> The HTTP method is supplied in the request and specifies the operation that the client has requested.
+    -> there are 8 methods of http we can use and those are :-
+         1. HEAD
+         2. TRACE
+         3. PUT
+         4. DELETE
+         5. OPTIONS
+         6. POST
+         7. GET
+         8. CONNECT
+
+6. GET Method.
+    -> GET is used to request data from a specified resource.
+    -> GET is one of the most common HTTP methods.
+    -> GET requests should never be used when dealing with sensitive data
+    -> for example:- 
+        -> app.get(route, callback)
+        -> This function tells what to do when a get request at the given route is called. 
+        -> The callback function has 2 parameters, request(req) and response(res). 
+        -> The request object(req) represents the HTTP request and has properties for the request query string, parameters, body, etc. 
+        -> Similarly, the response object represents the HTTP response that the Express app sends when it receives an HTTP request.
+
+7. POST method.
+    -> POST is used to send data to a server to create a resource.
+    -> The data sent to the server with POST is stored in the request body of the HTTP request.
+    -> POST is not idempotent, so making a POST request more than one time may have additional side effects, like creating a second, third and fourth duplicates. 
+
+8. PUT Method
+    -> PUT is used to send data to a server to create/update a resource.
+    -> The difference between POST and PUT is that PUT requests are idempotent. 
+    -> That is, calling the same PUT request multiple times will always produce the same result. 
+    -> In contrast, calling a POST request repeatedly have side effects of creating the same resource multiple times.
+
+9. DELETE method.
+    -> DELETE method is used to delete the specified resource from the database or server.
+
+10. Routing in express.
+    -> Routing refers to determining how an application responds to a client request to a particular endpoint.
+    -> which is a URL (or path) and a specific HTTP request method (GET, POST, and so on).
+    -> Each route can have one or more handler functions, which are executed when the route is matched.
+    -> Route definition takes the following structure:
+        -> app.METHOD(PATH, HANDLER)
+        -> Where: app is an instance of express.
+                  METHOD is an HTTP request method, in lowercase.
+                  PATH is a path on the server.
+                  HANDLER is the function executed when the route is matched
+
+11. Middleware Functions.
+    -> Middleware functions are functions that have access to the request object (req), the response object (res), and the next function in the application’s request-response cycle.
+    -> The next function is a function in the Express router which, when invoked, executes the middleware succeeding the current middleware.
+    -> Middleware functions can perform the following tasks:
+        -> Execute any code.
+        -> Make changes to the request and the response objects.
+        -> End the request-response cycle.
+        -> Call the next middleware in the stack.
+    -> If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function.
+    -> Otherwise, the request will be left hanging.
+
+12. Types of Middlewares.
+    -> Express is a routing and middleware web framework that has minimal functionality of its own.
+    -> An Express application is essentially a series of middleware function calls.
+    -> An Express application can use the following types of middleware:
+        1. Application-level middleware.
+        2. Router-level middleware.
+        3. Error-handling middleware.
+        4. Built-in middleware.
+        5. Third-party middleware.
+
+13. Static Files in express ?.
+    -> Static files are files that clients download as they are from the server.
+    -> Create a new directory, public. Express, by default does not allow you to serve static files.
+    -> You need to enable it using the following built-in middleware:-
+        -> app.use(express.static('public'));
+    -> The root route is now set to your public directory, so all static files you load will be considering public as root.
+
+14. express.json([options]).
+    -> This is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser.
+
+15. express.static(root, [options]).
+    -> This is a built-in middleware function in Express. It serves static files and is based on serve-static.
+
+16. express.Router([options]).
+    -> Creates a new router object.
+    -> const router = express.Router([options]).
+
+17. express.urlencoded([options]).
+    -> This is a built-in middleware function in Express. It parses incoming requests with urlencoded payloads and is based on body-parser.
+
+
+

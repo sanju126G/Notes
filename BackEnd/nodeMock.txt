@@ -80,24 +80,33 @@
          const fs = require('fs')
     -> Once you do so, you have access to all its methods, which include:
     -> directory methods
-        1. fs.access(): check if the file exists and Node.js can access it with its permissions.
-        2. fs.mkdir(): this is method will create a directory, it will take two arguments the path(the path where we want to create the file) 
-                        and a callback function (this call back funtion can be used to handle errors if there is any, like the given path not found error)
-        3. fs.readdir(): this function can be used to read all the files inside a specified directory. it also take same arguments like mkdir()
-        4. fs.rmdir(): this function is used to delete the existing directory. arguments is same as above methods.
-        5. existsSync() : this method will give us the boolean Values. it'll take one argument which is the path of the directory which needs to be deleted.
+        1. fs.access()                  : check if the file exists and Node.js can access it with its permissions.
+        2. fs.mkdir('path', ()=>{})     : this is method will create a directory, it will take two arguments the path(the path where we want to create the file) 
+                                          and a callback function (this call back funtion can be used to handle errors if there is any, like the given path not found error)
+        3. fs.readdir('path', ()=>{})   : this function can be used to read all the files inside a specified directory. it also take same arguments like mkdir()
+        4. fs.rmdir('path', ()=>{})     : this function is used to delete the existing directory. arguments is same as above methods.
+        5. existsSync('path', ()=>{})   : this method will give us the boolean Values. it'll take one argument which is the path of the directory which needs to be deleted.
     
     -> file methods 
+
         1. writeFile('path','content of the file', ()=>{}) 
+
         2. readFile('path', ()=>{}) 
+        
         3. appendFile('path','content of the new file', ()=>{}) 
+        
         4. renameFile('path','new name of the file', ()=>{}) 
+        
         5. unlinkFile('path',()=>{})
+        
         6. open("path", ()=>{})
+        
         7. close("path",()=>{})
     
     -> createWriteStream( 'path', {encodeing:'utf-8'})
+
     -> createReadStream( 'path', {encodeing:'utf-8'})
+    
     ->readStream.pipe(WriteStream)
 
 9. Events module:-
