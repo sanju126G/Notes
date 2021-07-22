@@ -1,0 +1,43 @@
+<!-- https://meet.google.com/svd-gfce-cxo -->
+
+<h1>Template Driven Form</h1>
+<div class="container mt-1 mb-1">
+    <form #tdfForm="ngForm" (ngSubmit)="onSubmit(tdfForm)">
+        <div class="form-group">
+            <label for="email" class="mt-1 mb-1">Email :</label>
+            <input type="email" class="form-control" required name="email" ngModel>
+        </div>
+        <div class="form-group">
+            <label for="password" class="mt-1 mb-1">Password :</label>
+            <input type="text" class="form-control" required name="password" ngModel>
+        </div>
+        <div class="form-group" class="mt-1 mb-1">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+</div>
+
+
+
+<h1>Reactive Form</h1>
+<div class="container">
+    <form [formGroup]="reactiveForm" (ngSubmit)="onReactSubmit()">
+        <div class="form-group">
+            <label for="name">Name :</label>
+            <input type="text" class="form-control" formControlName="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" class="form-control" formControlName="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password :</label>
+            <input type="text" class="form-control" formControlName="password" name="password">
+        </div>
+        <div class="form-group">
+            <button type="submit" [disabled]="reactiveForm.invalid" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+</div>

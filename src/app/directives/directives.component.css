@@ -1,0 +1,15 @@
+.special {
+    color: green !important;
+}
+
+.notSoSpecial {
+    color: orange !important;
+}
+
+.forExpressions {
+    font-weight: bolder;
+}
+
+.mouse {
+    cursor: pointer;
+}

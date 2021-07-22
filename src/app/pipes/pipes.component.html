@@ -1,0 +1,88 @@
+<h1 class="text-center">Pipes In Angular</h1>
+<h3>
+    <ul>
+        <li>The Angular Pipe takes the raw data as input and then transforms the raw data into some desired format.</li>
+
+        <li>There Are four Types of pipes that we can use in angular :-</li><br>
+
+        <ol>
+            <li>Built-in pipes</li>
+            <ol type="A">
+                <li>lowercase.
+                    <ul>
+                        <li>
+                            <p class="fs-4">{{uppercase | lowercase}}</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>uppercase.
+                    <ul>
+                        <li>
+                            <p class="fs-4">{{lowercase | uppercase}} </p>
+                        </li>
+                    </ul>
+                </li>
+                <li>currency.
+                    <ul>
+                        <li>
+                            <p class="fs-4"> before using pipe {{currency}} | after using pipe {{currency | currency}}</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>date.
+                    <ul>
+                        <li>
+                            <p class="fs-4"> before using pipe {{date}} | after using pipe {{date | date}}</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>percent.
+                    <ul>
+                        <li>
+                            <p class="fs-4"> before using pipe {{percentage}} | after using pipe {{percentage | percent}}</p>
+                        </li>
+                    </ul>
+                </li>
+            </ol><br>
+
+            <li>Parameterized Pipes</li>
+            <ul>
+                <li>
+
+                    <p>we can pass one are more parameters to pipe.</p>
+                    <p>before using pipe {{date}}</p>
+                    <ul>
+                        <li>
+                            <p class="fs-4"> after using pipe {{date | date : 'short'}}</p>
+                        </li>
+                        <li>
+                            <p class="fs-4"> after using pipe {{date | date : 'long'}}</p>
+                        </li>
+                        <li>
+                            <p class="fs-4"> after using pipe {{date | date : 'medium'}}</p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <li>Chaining pipes.</li>
+            <ul>
+                <li>
+
+                    <p>we can connect multiple pipes to a single data input.</p>
+
+                </li>
+            </ul>
+
+            <li>Custom pipes.</li>
+            <ul>
+                <li>
+
+                    <p>In addtion to built-in pipes we can also create our own pipes using the Command ng g p pipeName</p>
+
+                </li>
+            </ul>
+
+        </ol>
+    </ul>
+</h3>

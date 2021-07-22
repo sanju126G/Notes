@@ -1,0 +1,37 @@
+<h1 class="text-center fw-buld">Data Binding in Angular</h1>
+<ul class="container">
+    <li>
+        <p>Data Binding is a process that creates a connection to communicate and synchronize between the user interface and the data.</p>
+    </li>
+    <li>
+        Types of Data Binding in Angular:
+        <ol>
+            <li> One Way Data Binding</li>
+            <br>
+            <ol type="I">
+                <li>Component To View</li>
+                <ol type="a">
+                    <li>{{interpolation}}</li>
+                    <li [style]="style">Style Binding</li>
+                    <li [class]="classVar">Class Binding</li>
+                    <li [value]="value">property Binding</li>
+                    <li [attr.value]="value">Attribute Binding</li>
+                </ol><br>
+                <li> View To Component</li>
+                <ol type="a">
+                    <li class="mouse" (click)="changeColor()">Event Binding</li>
+                    <div *ngIf="show" class="mt-2"> {{message}}</div>
+                </ol>
+            </ol>
+            <br>
+            <li> Two Way Data Binding</li>
+            <ol type="a">
+                <li>[(ngModel)]</li>
+            </ol>
+            <form>
+                <input class="form-control mx-2" type="text" placeholder="Enter Text To Display using ngModel" name="content" [(ngModel)]="content">
+            </form>
+            <h1>{{content | uppercase}}</h1>
+        </ol>
+    </li>
+</ul>
