@@ -2,7 +2,6 @@ Postal Code API :- https://api.worldpostallocations.com/pincode?postalcode=56008
 
 Goggle Meet link :- https://meet.google.com/hho-xbif-qzu
 
-
 Javascript Notes
 
 1. What is JavaScript?
